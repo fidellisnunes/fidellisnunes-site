@@ -1,0 +1,1630 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fidellis Nunes Advocacia | Escritório de Advocacia 100% Digital</title>
+    <meta name="description" content="Fidellis Nunes Advocacia - Advocacia de alto padrão totalmente digital. Segurança, ética e excelência jurídica ao seu alcance em qualquer lugar. Em conformidade com o Provimento 205/2021 da OAB.">
+    <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 fill=%22%23A9803C%22>F</text></svg>">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
+
+    <style>
+        /* ==========================================
+           1. ESTILOS DE BASE & VARIÁVEIS (Design Tokens)
+           ========================================== */
+        :root {
+            --gold: #A9803C;
+            --bg-main: #FFFFFF;
+            --bg-sec: #F9F8F6;
+            --bg-hover: #F2EFE9;
+            --text-main: #1A1A1A;
+            --text-muted: #5A5A5A;
+            --border: rgba(169, 128, 60, 0.2);
+            --transition-smooth: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Scrollbar Personalizada */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--bg-sec);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: var(--gold);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #8e682e;
+        }
+
+        /* Utilitários */
+        section {
+            padding: 100px 10%;
+        }
+
+        /* ==========================================
+           2. HEADER E NAVBAR
+           ========================================== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            background-color: transparent;
+            border-bottom: 1px solid transparent;
+            padding: 30px 10%;
+            transition: var(--transition-smooth);
+        }
+
+        .header.scrolled {
+            padding: 18px 10%;
+            background-color: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.02);
+        }
+
+        .nav-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: var(--text-main);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-dot {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background-color: var(--gold);
+            border-radius: 50%;
+            margin-left: 4px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-link {
+            position: relative;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-main);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            padding: 8px 0;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 1.5px;
+            background-color: var(--gold);
+            transition: width 0.3s ease, left 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--gold);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        .btn-header-cta {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--bg-main);
+            background-color: var(--gold);
+            border: 1px solid var(--gold);
+            padding: 12px 28px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: var(--transition-smooth);
+        }
+
+        .btn-header-cta:hover {
+            background-color: transparent;
+            color: var(--gold);
+        }
+
+        .hamburger-btn {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 24px;
+            height: 18px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            z-index: 1002;
+        }
+
+        .hamburger-btn span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: var(--text-main);
+            transition: transform 0.3s ease, opacity 0.3s ease;
+        }
+
+        .hamburger-btn span:nth-child(1) {
+            transform-origin: top left;
+        }
+
+        .hamburger-btn span:nth-child(3) {
+            transform-origin: bottom left;
+        }
+
+        /* ==========================================
+           3. MENU MOBILE DRAWER
+           ========================================== */
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100vh;
+            background-color: rgba(26, 26, 26, 0.4);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 1000;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu-drawer {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 320px;
+            height: 100%;
+            background-color: var(--bg-main);
+            box-shadow: -10px 0 40px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            padding: 40px;
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .mobile-menu-overlay.active .mobile-menu-drawer {
+            transform: translateX(0);
+        }
+
+        .mobile-close-btn {
+            align-self: flex-end;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            line-height: 1;
+            color: var(--text-main);
+            cursor: pointer;
+            margin-bottom: 60px;
+            transition: color 0.3s;
+        }
+
+        .mobile-close-btn:hover {
+            color: var(--gold);
+        }
+
+        .mobile-nav-links {
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            margin-bottom: auto;
+        }
+
+        .mobile-nav-links a {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .mobile-nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .mobile-drawer-footer {
+            border-top: 1px solid var(--border);
+            padding-top: 30px;
+        }
+
+        .mobile-drawer-oab {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ==========================================
+           4. HERO SECTION
+           ========================================== */
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            align-items: center;
+            gap: 5%;
+            padding-top: 150px;
+            padding-bottom: 80px;
+            position: relative;
+            background-color: var(--bg-main);
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero-tagline {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--gold);
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-tagline::before {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 1px;
+            background-color: var(--gold);
+        }
+
+        .hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.8rem;
+            font-weight: 300;
+            color: var(--text-main);
+            line-height: 1.1;
+            margin-bottom: 2rem;
+        }
+
+        .hero-title em {
+            font-family: 'Cormorant Garamond', serif;
+            font-style: italic;
+            font-weight: 400;
+            color: var(--gold);
+        }
+
+        .hero-desc {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+            max-width: 90%;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .btn-primary {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--bg-main);
+            background-color: var(--gold);
+            border: 1px solid var(--gold);
+            padding: 16px 36px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        .btn-primary:hover {
+            background-color: transparent;
+            color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--gold);
+            background-color: transparent;
+            border: 1px solid var(--border);
+            padding: 16px 36px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            text-decoration: none;
+            transition: var(--transition-smooth);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--bg-hover);
+            border-color: var(--gold);
+            transform: translateY(-2px);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 4rem;
+            border-top: 1px solid var(--border);
+            padding-top: 2.5rem;
+        }
+
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            font-weight: 400;
+            color: var(--gold);
+            line-height: 1.1;
+        }
+
+        .stat-lbl {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            margin-top: 6px;
+        }
+
+        .hero-image-col {
+            position: relative;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-image-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 2/3;
+            max-height: 650px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            padding: 12px;
+            background-color: var(--bg-main);
+        }
+
+        .hero-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Máscara de gradiente */
+        .hero-veil {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, var(--bg-main) 0%, rgba(255,255,255,0) 20%),
+                        linear-gradient(0deg, var(--bg-main) 0%, rgba(255,255,255,0) 10%);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .corner-bracket {
+            position: absolute;
+            bottom: 24px;
+            right: 24px;
+            width: 48px;
+            height: 48px;
+            border-bottom: 2px solid var(--gold);
+            border-right: 2px solid var(--gold);
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        /* ==========================================
+           5. SEÇÃO SOBRE (MANIFESTO E VALORES)
+           ========================================== */
+        .sobre {
+            background-color: var(--bg-sec);
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 8%;
+            align-items: center;
+        }
+
+        .sobre-image-col {
+            position: relative;
+        }
+
+        .about-image-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 2/3;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            padding: 12px;
+            background-color: var(--bg-main);
+        }
+
+        .about-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition-smooth);
+        }
+
+        .about-image-wrapper:hover img {
+            transform: scale(1.05);
+        }
+
+        .floating-label {
+            position: absolute;
+            bottom: 35px;
+            right: -20px;
+            background-color: var(--gold);
+            color: var(--bg-main);
+            padding: 14px 28px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            z-index: 5;
+        }
+
+        .sobre-content-col {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .section-subtitle {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--gold);
+            margin-bottom: 0.8rem;
+        }
+
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.8rem;
+            font-weight: 300;
+            color: var(--text-main);
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .section-title em {
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .divider {
+            width: 60px;
+            height: 1px;
+            background-color: var(--gold);
+            margin-bottom: 2rem;
+        }
+
+        .sobre-manifesto {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 1.05rem;
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+
+        .value-card {
+            background-color: var(--bg-main);
+            border: 1px solid var(--border);
+            padding: 24px;
+            transition: var(--transition-smooth);
+        }
+
+        .value-card:hover {
+            background-color: var(--bg-hover);
+            border-color: var(--gold);
+            transform: translateY(-5px);
+        }
+
+        .value-icon {
+            width: 32px;
+            height: 32px;
+            stroke: var(--gold);
+            stroke-width: 1.2;
+            fill: none;
+            margin-bottom: 1.2rem;
+        }
+
+        .value-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 0.5rem;
+        }
+
+        .value-desc {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* ==========================================
+           6. SEÇÃO ÁREAS DE ATUAÇÃO
+           ========================================== */
+        .atuacao {
+            background-color: var(--bg-main);
+            text-align: center;
+        }
+
+        .atuacao-header {
+            max-width: 700px;
+            margin: 0 auto 4rem auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .atuacao-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            border: 1px solid var(--border);
+        }
+
+        .area-card {
+            position: relative;
+            background-color: var(--bg-main);
+            padding: 60px 40px;
+            text-align: left;
+            overflow: hidden;
+            transition: var(--transition-smooth);
+            border-right: 1px solid var(--border);
+        }
+
+        .area-card:last-child {
+            border-right: none;
+        }
+
+        .area-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 0;
+            height: 2.5px;
+            background-color: var(--gold);
+            transition: width 0.4s ease, left 0.4s ease;
+        }
+
+        .area-card:hover::after {
+            width: 100%;
+            left: 0;
+        }
+
+        .area-card:hover {
+            background-color: var(--bg-sec);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.02);
+            z-index: 2;
+        }
+
+        .area-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 4.5rem;
+            font-weight: 300;
+            color: rgba(169, 128, 60, 0.12);
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            transition: var(--transition-smooth);
+        }
+
+        .area-card:hover .area-number {
+            color: rgba(169, 128, 60, 0.3);
+            transform: scale(1.05);
+        }
+
+        .area-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.7rem;
+            font-weight: 500;
+            color: var(--text-main);
+            margin-bottom: 1.2rem;
+        }
+
+        .area-desc {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        /* ==========================================
+           7. SEÇÃO DIFERENCIAIS (COMO FUNCIONA)
+           ========================================== */
+        .diferenciais {
+            background-color: var(--bg-sec);
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 8%;
+            align-items: flex-start;
+        }
+
+        .diferenciais-intro {
+            position: sticky;
+            top: 120px;
+        }
+
+        .diferenciais-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+        }
+
+        .diferencial-card {
+            background-color: var(--bg-main);
+            border: 1px solid var(--border);
+            padding: 35px;
+            display: flex;
+            flex-direction: column;
+            transition: var(--transition-smooth);
+        }
+
+        .diferencial-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.02);
+        }
+
+        .step-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.2rem;
+            font-weight: 400;
+            color: var(--gold);
+            line-height: 1;
+            margin-bottom: 1.2rem;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 8px;
+            align-self: flex-start;
+        }
+
+        .step-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 0.8rem;
+        }
+
+        .step-desc {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* ==========================================
+           7.5. SEÇÃO DEPOIMENTOS
+           ========================================== */
+        .depoimentos {
+            background-color: var(--bg-main);
+            text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        .depoimentos-header {
+            max-width: 700px;
+            margin: 0 auto 4rem auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .depoimentos-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .depoimento-card {
+            background-color: var(--bg-sec);
+            border: 1px solid var(--border);
+            padding: 40px 30px;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: var(--transition-smooth);
+        }
+
+        .depoimento-card:hover {
+            background-color: var(--bg-hover);
+            border-color: var(--gold);
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.02);
+        }
+
+        .stars-container {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 1.5rem;
+        }
+
+        .star-icon {
+            width: 16px;
+            height: 16px;
+            fill: var(--gold);
+        }
+
+        .depoimento-text {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            line-height: 1.7;
+            font-style: italic;
+            margin-bottom: 2rem;
+        }
+
+        .depoimento-autor {
+            display: flex;
+            flex-direction: column;
+            border-top: 1px solid var(--border);
+            padding-top: 1.2rem;
+        }
+
+        .autor-nome {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--text-main);
+        }
+
+        .autor-cargo {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--gold);
+            margin-top: 2px;
+        }
+
+        /* ==========================================
+           8. CONTATO & ASSINATURA
+           ========================================== */
+        .contato {
+            background-color: var(--bg-main);
+            border-top: 1px solid var(--border);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10%;
+            align-items: center;
+        }
+
+        .contato-info {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .contato-header {
+            margin-bottom: 3rem;
+        }
+
+        .info-block {
+            margin-bottom: 2.2rem;
+        }
+
+        .info-label {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .info-value {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            font-weight: 400;
+            color: var(--text-main);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a.info-value:hover {
+            color: var(--gold);
+        }
+
+        .btn-whatsapp {
+            background-color: #22C55E;
+            color: #FFFFFF;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 16px 36px;
+            border: none;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            box-shadow: 0 4px 20px rgba(34, 197, 94, 0.25);
+            transition: var(--transition-smooth);
+            margin-top: 1.5rem;
+            align-self: flex-start;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #1ebd54;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(34, 197, 94, 0.35);
+        }
+
+        .btn-whatsapp svg {
+            width: 18px;
+            height: 18px;
+            fill: #FFFFFF;
+        }
+
+        .contato-signature-col {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-left: 1px solid var(--border);
+            padding-left: 10%;
+            height: 80%;
+        }
+
+        .signature-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3.5rem;
+            font-style: italic;
+            font-weight: 300;
+            color: var(--text-main);
+            text-align: center;
+            line-height: 1.2;
+            opacity: 0.9;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--bg-sec);
+            border-top: 1px solid var(--border);
+            padding: 40px 10%;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-left {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-right {
+            text-align: right;
+        }
+
+        .footer-copyright {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 4px;
+        }
+
+        .footer-compliance {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.7rem;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        /* ==========================================
+           9. EFEITOS DE REVEAL (Scroll Animations)
+           ========================================== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 1.2s cubic-bezier(0.25, 1, 0.5, 1), transform 1.2s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-delay-1 { transition-delay: 0.15s; }
+        .reveal-delay-2 { transition-delay: 0.3s; }
+        .reveal-delay-3 { transition-delay: 0.45s; }
+        .reveal-delay-4 { transition-delay: 0.6s; }
+
+        /* ==========================================
+           10. RESPONSIVIDADE (MEDIA QUERIES)
+           ========================================== */
+        @media (max-width: 1023px) {
+            section {
+                padding: 70px 30px;
+            }
+
+            .header {
+                padding: 20px 30px;
+            }
+
+            .header.scrolled {
+                padding: 15px 30px;
+            }
+
+            .nav-menu, .btn-header-cta {
+                display: none;
+            }
+
+            .hamburger-btn {
+                display: flex;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                gap: 50px;
+                padding-top: 130px;
+                padding-bottom: 50px;
+                text-align: center;
+            }
+
+            .hero-tagline {
+                justify-content: center;
+            }
+
+            .hero-tagline::before {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: 2.8rem;
+            }
+
+            .hero-desc {
+                max-width: 100%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-actions {
+                justify-content: center;
+                flex-direction: column;
+                gap: 1rem;
+                width: 100%;
+                max-width: 320px;
+                margin: 0 auto 3rem auto;
+            }
+
+            .hero-stats {
+                justify-content: center;
+                gap: 2.5rem;
+            }
+
+            .hero-image-col {
+                order: -1;
+            }
+
+            .hero-image-wrapper {
+                max-width: 450px;
+                margin: 0 auto;
+            }
+
+            .sobre {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .about-image-wrapper {
+                max-width: 450px;
+                margin: 0 auto;
+            }
+
+            .floating-label {
+                right: 10px;
+                bottom: 20px;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+                gap: 1.2rem;
+            }
+
+            .atuacao-grid {
+                grid-template-columns: 1fr;
+                border: none;
+                gap: 1.5rem;
+            }
+
+            .area-card {
+                border-right: none;
+                border: 1px solid var(--border);
+                padding: 40px 30px;
+            }
+
+            .diferenciais {
+                grid-template-columns: 1fr;
+                gap: 50px;
+            }
+
+            .diferenciais-intro {
+                position: static;
+                text-align: center;
+                margin-bottom: 20px;
+            }
+
+            .diferenciais-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .depoimentos-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .depoimento-card {
+                padding: 30px 25px;
+            }
+
+            .contato {
+                grid-template-columns: 1fr;
+                gap: 50px;
+                text-align: center;
+            }
+
+            .contato-info {
+                align-items: center;
+            }
+
+            .btn-whatsapp {
+                align-self: center;
+            }
+
+            .contato-signature-col {
+                border-left: none;
+                border-top: 1px solid var(--border);
+                padding-left: 0;
+                padding-top: 50px;
+            }
+
+            .signature-text {
+                font-size: 2.8rem;
+            }
+
+            .footer {
+                padding: 30px 30px;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .footer-right {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ==========================================
+       NAVBAR / HEADER
+       ========================================== -->
+    <header class="header" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                FIDELLIS NUNES<span class="logo-dot"></span>
+            </a>
+            
+            <nav class="nav-menu">
+                <a href="#inicio" class="nav-link">Início</a>
+                <a href="#sobre" class="nav-link">Sobre</a>
+                <a href="#atuacao" class="nav-link">Áreas</a>
+                <a href="#diferenciais" class="nav-link">Como Funciona</a>
+                <a href="#contato" class="nav-link">Contato</a>
+            </nav>
+            
+            <a href="#contato" class="btn-header-cta">Atendimento</a>
+            
+            <button class="hamburger-btn" id="menu-btn" aria-label="Abrir Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- MENU MOBILE DRAWER -->
+    <div class="mobile-menu-overlay" id="menu-overlay">
+        <div class="mobile-menu-drawer">
+            <button class="mobile-close-btn" id="close-btn" aria-label="Fechar Menu">✕</button>
+            <nav class="mobile-nav-links">
+                <a href="#inicio" class="mobile-link">Início</a>
+                <a href="#sobre" class="mobile-link">Sobre</a>
+                <a href="#atuacao" class="mobile-link">Áreas</a>
+                <a href="#diferenciais" class="mobile-link">Como Funciona</a>
+                <a href="#contato" class="mobile-link">Contato</a>
+            </nav>
+            <div class="mobile-drawer-footer">
+                <span class="mobile-drawer-oab">Fidellis Nunes Advocacia • OAB/ES 35.054</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================
+       HERO SECTION
+       ========================================== -->
+    <section class="hero" id="inicio">
+        <div class="hero-content reveal">
+            <span class="hero-tagline">Advocacia 100% Digital</span>
+            <h1 class="hero-title">
+                Soluções jurídicas <em>inteligentes</em> para a era <em>conectada</em>.
+            </h1>
+            <p class="hero-desc">
+                Desburocratizamos a defesa de seus direitos. Uma estrutura de alto padrão inteiramente digital para oferecer agilidade, segurança jurídica e discrição sem limites geográficos.
+            </p>
+            <div class="hero-actions">
+                <a href="#contato" class="btn-primary">Consulta Virtual</a>
+                <a href="#sobre" class="btn-secondary">Conheça o Escritório</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-num">100%</span>
+                    <span class="stat-lbl">Digital e Seguro</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-num">+5</span>
+                    <span class="stat-lbl">Anos de Inovação</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="hero-image-col reveal reveal-delay-2">
+            <div class="hero-image-wrapper">
+                <img src="assets/hero-lawyer.jpg" alt="Advogado do escritório Fidellis Nunes Advocacia escrevendo em seu escritório digital de alto padrão">
+                <div class="hero-veil"></div>
+                <div class="corner-bracket"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+       SEÇÃO SOBRE (MANIFESTO & VALORES)
+       ========================================== -->
+    <section class="sobre" id="sobre">
+        <div class="sobre-image-col reveal">
+            <div class="about-image-wrapper">
+                <img src="assets/about-lawyer.jpg" alt="Retrato corporativo do Dr. Rudson Fidellis, sócio-fundador e advogado especialista">
+                <div class="floating-label">Dr. Rudson Fidellis • OAB/ES 35.054</div>
+            </div>
+        </div>
+        
+        <div class="sobre-content-col reveal reveal-delay-2">
+            <span class="section-subtitle">Sobre Nós</span>
+            <h2 class="section-title">A união entre <em>tradição jurídica</em> e <em>tecnologia</em>.</h2>
+            <div class="divider"></div>
+            <p class="sobre-manifesto">
+                Fundado sob a premissa de que a excelência não deve ser limitada pela distância, o Fidellis Nunes Advocacia redefine o conceito de escritório de alto padrão. Unimos o rigor técnico tradicional a ferramentas tecnológicas de ponta para entregar conforto, sigilo absoluto e resultados concretos de forma totalmente remota.
+            </p>
+            
+            <div class="values-grid">
+                <!-- Ética -->
+                <div class="value-card">
+                    <svg class="value-icon" viewBox="0 0 24 24">
+                        <path d="M12 3v18M6 7h12M6 7l-3 4h6L6 7zm12 0l-3 4h6l-3-4zM6 11c0 3 3 4 3 4s-3 1-3 4m12-8c0 3-3 4-3 4s3 1 3 4" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <h3 class="value-title">Ética</h3>
+                    <p class="value-desc">Atuação sob os mais rígidos preceitos morais e conformidade absoluta com a OAB.</p>
+                </div>
+                <!-- Agilidade -->
+                <div class="value-card">
+                    <svg class="value-icon" viewBox="0 0 24 24">
+                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <h3 class="value-title">Agilidade</h3>
+                    <p class="value-desc">Tempo de resposta otimizado através de fluxos de trabalho digitais e integrados.</p>
+                </div>
+                <!-- Sigilo -->
+                <div class="value-card">
+                    <svg class="value-icon" viewBox="0 0 24 24">
+                        <rect x="5" y="11" width="14" height="10" rx="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M8 11V7a4 4 0 018 0v4" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <h3 class="value-title">Sigilo</h3>
+                    <p class="value-desc">Proteção rigorosa de dados sensíveis e comunicações em ambientes criptografados.</p>
+                </div>
+                <!-- Proximidade -->
+                <div class="value-card">
+                    <svg class="value-icon" viewBox="0 0 24 24">
+                        <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <h3 class="value-title">Proximidade</h3>
+                    <p class="value-desc">Atendimento humanizado e disponível, mantendo o cliente sempre informado.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+       SEÇÃO ÁREAS DE ATUAÇÃO
+       ========================================== -->
+    <section class="atuacao" id="atuacao">
+        <div class="atuacao-header reveal">
+            <span class="section-subtitle">Especialidades</span>
+            <h2 class="section-title">Áreas de <em>Atuação Estratégica</em></h2>
+            <div class="divider"></div>
+        </div>
+        
+        <div class="atuacao-grid reveal reveal-delay-2">
+            <!-- Direito do Trabalho -->
+            <div class="area-card">
+                <div class="area-number">01</div>
+                <h3 class="area-title">Direito do Trabalho</h3>
+                <p class="area-desc">
+                    Defesa preventiva de empresas, reestruturação trabalhista, contratos para regime home office e assessoria executiva de alto padrão voltada à segurança corporativa.
+                </p>
+            </div>
+            <!-- Direito Civil -->
+            <div class="area-card">
+                <div class="area-number">02</div>
+                <h3 class="area-title">Direito Civil</h3>
+                <p class="area-desc">
+                    Planejamento patrimonial e sucessório, contratos civis e digitais personalizados, além de resoluções de conflitos na esfera extrajudicial e contenciosa de alta complexidade.
+                </p>
+            </div>
+            <!-- Direito do Consumidor -->
+            <div class="area-card">
+                <div class="area-number">03</div>
+                <h3 class="area-title">Direito do Consumidor</h3>
+                <p class="area-desc">
+                    Defesa estratégica nas relações de consumo em ambientes digitais. Atuação especializada em fraudes eletrônicas, contratos de e-commerce, proteção de dados do consumidor e indenizações complexas.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+       SEÇÃO DIFERENCIAIS (COMO FUNCIONA)
+       ========================================== -->
+    <section class="diferenciais" id="diferenciais">
+        <div class="diferenciais-intro reveal">
+            <span class="section-subtitle">Diferenciais</span>
+            <h2 class="section-title">Sua jornada legal, de forma <em>simples</em>.</h2>
+            <div class="divider"></div>
+            <p class="sobre-manifesto" style="font-size: 0.95rem;">
+                Eliminamos barreiras burocráticas tradicionais para que você possa focar no que realmente importa, com segurança jurídica de ponta a ponta.
+            </p>
+        </div>
+        
+        <div class="diferenciais-grid reveal reveal-delay-2">
+            <!-- Contato -->
+            <div class="diferencial-card">
+                <span class="step-num">01</span>
+                <h3 class="step-title">Contato Inicial</h3>
+                <p class="step-desc">Você apresenta seu caso por meio do nosso canal seguro de atendimento, agendando o melhor horário.</p>
+            </div>
+            <!-- Videoconferência -->
+            <div class="diferencial-card">
+                <span class="step-num">02</span>
+                <h3 class="step-title">Reunião Virtual</h3>
+                <p class="step-desc">Realizamos um atendimento humanizado por videochamada privada para entender suas necessidades e traçar a estratégia.</p>
+            </div>
+            <!-- Assinatura Eletrônica -->
+            <div class="diferencial-card">
+                <span class="step-num">03</span>
+                <h3 class="step-title">Assinatura Digital</h3>
+                <p class="step-desc">A assinatura da procuração e do contrato de honorários ocorre eletronicamente em minutos, com total validade legal.</p>
+            </div>
+            <!-- Acompanhamento -->
+            <div class="diferencial-card">
+                <span class="step-num">04</span>
+                <h3 class="step-title">Monitoramento</h3>
+                <p class="step-desc">Você recebe atualizações constantes do seu processo em tempo real através dos nossos canais criptografados de comunicação.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+       SEÇÃO DEPOIMENTOS
+       ========================================== -->
+    <section class="depoimentos" id="depoimentos">
+        <div class="depoimentos-header reveal">
+            <span class="section-subtitle">Reconhecimento</span>
+            <h2 class="section-title">O que dizem nossos <em>clientes</em></h2>
+            <div class="divider"></div>
+        </div>
+        
+        <div class="depoimentos-grid reveal reveal-delay-2">
+            <!-- Depoimento 1 -->
+            <div class="depoimento-card">
+                <div>
+                    <div class="stars-container">
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    </div>
+                    <p class="depoimento-text">
+                        "O atendimento 100% digital superou todas as expectativas. Conseguimos resolver a reestruturação dos contratos da nossa empresa com extrema agilidade e segurança jurídica, sem necessidade de deslocamento."
+                    </p>
+                </div>
+                <div class="depoimento-autor">
+                    <span class="autor-nome">M. S. Nunes</span>
+                    <span class="autor-cargo">Diretor de Operações</span>
+                </div>
+            </div>
+            <!-- Depoimento 2 -->
+            <div class="depoimento-card">
+                <div>
+                    <div class="stars-container">
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    </div>
+                    <p class="depoimento-text">
+                        "O Dr. Fidellis e sua equipe atuaram no planejamento sucessório da nossa família com máximo profissionalismo, discrição e presteza técnica. O formato online facilitou as reuniões com familiares em diferentes estados."
+                    </p>
+                </div>
+                <div class="depoimento-autor">
+                    <span class="autor-nome">A. L. R.</span>
+                    <span class="autor-cargo">Empresária e Investidora</span>
+                </div>
+            </div>
+            <!-- Depoimento 3 -->
+            <div class="depoimento-card">
+                <div>
+                    <div class="stars-container">
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                        <svg class="star-icon" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                    </div>
+                    <p class="depoimento-text">
+                        "Excelente assessoria jurídica contratual para nossa startup de tecnologia. A assinatura digital e a velocidade de resposta no acompanhamento diário fazem toda a diferença para o nosso ritmo de crescimento."
+                    </p>
+                </div>
+                <div class="depoimento-autor">
+                    <span class="autor-nome">Tech Founder</span>
+                    <span class="autor-cargo">CEO em Tecnologia</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+       CONTATO & ASSINATURA
+       ========================================== -->
+    <section class="contato" id="contato">
+        <div class="contato-info reveal">
+            <div class="contato-header">
+                <span class="section-subtitle">Contato</span>
+                <h2 class="section-title">Inicie sua <em>consulta virtual</em></h2>
+                <div class="divider"></div>
+            </div>
+            
+            <div class="info-block">
+                <div class="info-label">E-mail Corporativo</div>
+                <a href="mailto:contato@fidellisnunes.adv.br" class="info-value">contato@fidellisnunes.adv.br</a>
+            </div>
+            
+            <div class="info-block">
+                <div class="info-label">Telefone & WhatsApp</div>
+                <a href="https://wa.me/5527998328676" target="_blank" rel="noopener noreferrer" class="info-value">+55 (27) 99832-8676</a>
+            </div>
+            
+            <div class="info-block">
+                <div class="info-label">Registro Profissional</div>
+                <div class="info-value">OAB/ES nº 35.054</div>
+            </div>
+            
+            <!-- Botão WhatsApp Premium -->
+            <a href="https://wa.me/5527998328676" target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
+                <svg viewBox="0 0 24 24">
+                    <path d="M12.012 2C6.48 2 2 6.48 2 12.012c0 1.73.443 3.414 1.288 4.908L2 22l5.228-1.37a9.96 9.96 0 004.782 1.22c5.533 0 10.013-4.48 10.013-10.012C22.025 6.48 17.545 2 12.012 2zm6.2 13.916c-.27.76-1.57 1.48-2.15 1.54-.51.05-1.17.07-3.4-.85-2.85-1.18-4.69-4.08-4.83-4.27-.14-.19-1.14-1.52-1.14-2.9 0-1.38.72-2.06.98-2.34.26-.28.57-.35.76-.35.19 0 .38 0 .54.01.17.01.39-.06.61.47.23.56.78 1.91.85 2.05.07.14.12.31.02.51-.1.2-.15.32-.3.49-.15.17-.32.39-.46.52-.16.15-.33.32-.14.65.19.33.85 1.4 1.83 2.27.84.75 1.55 1 1.93 1.16.38.16.61.13.84-.13.23-.26.98-1.14 1.24-1.53.26-.39.52-.33.88-.2.36.13 2.28 1.08 2.38 1.13.1.05.17.24.1.44z"/>
+                </svg>
+                Conversar no WhatsApp
+            </a>
+        </div>
+        
+        <div class="contato-signature-col reveal reveal-delay-2">
+            <div class="signature-text">
+                Fidellis Nunes<br>Advocacia
+            </div>
+        </div>
+    </section>
+
+    <!-- ==========================================
+       FOOTER
+       ========================================== -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                FIDELLIS NUNES<span class="logo-dot"></span>
+            </div>
+            <div class="footer-right">
+                <p class="footer-copyright">&copy; 2026 Fidellis Nunes Advocacia. Todos os direitos reservados.</p>
+                <p class="footer-compliance">Em conformidade com o Provimento 205/2021 da OAB</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ==========================================
+       11. JAVASCRIPT VANILLA
+       ========================================== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // --- 1. NAVBAR SCROLL EFFECT ---
+            const navbar = document.getElementById('navbar');
+            
+            const handleScroll = () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            };
+
+            window.addEventListener('scroll', handleScroll);
+            handleScroll(); // Executar uma vez no carregamento inicial para estados já scrollados
+
+            // --- 2. MOBILE MENU DRAWER LOGIC ---
+            const menuBtn = document.getElementById('menu-btn');
+            const closeBtn = document.getElementById('close-btn');
+            const menuOverlay = document.getElementById('menu-overlay');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+            
+            const openMenu = () => {
+                menuOverlay.classList.add('active');
+                menuBtn.style.opacity = '0'; // Oculta botão hambúrguer enquanto menu está aberto
+                document.body.style.overflow = 'hidden'; // Impede o scroll de fundo
+            };
+
+            const closeMenu = () => {
+                menuOverlay.classList.remove('active');
+                menuBtn.style.opacity = '1';
+                document.body.style.overflow = 'auto'; // Restaura o scroll
+            };
+
+            menuBtn.addEventListener('click', openMenu);
+            closeBtn.addEventListener('click', closeMenu);
+            
+            // Fecha ao clicar fora do menu (overlay)
+            menuOverlay.addEventListener('click', (e) => {
+                if (e.target === menuOverlay) {
+                    closeMenu();
+                }
+            });
+
+            // Fecha ao clicar em qualquer link
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', closeMenu);
+            });
+
+            // --- 3. SCROLL REVEAL (INTERSECTION OBSERVER) ---
+            const revealElements = document.querySelectorAll('.reveal');
+            
+            const revealObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        revealObserver.unobserve(entry.target); // Revela apenas uma vez
+                    }
+                });
+            }, {
+                threshold: 0.15,
+                rootMargin: '0px 0px -50px 0px'
+            });
+
+            revealElements.forEach(el => {
+                revealObserver.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
