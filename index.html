@@ -1016,6 +1016,67 @@
             font-weight: 500;
         }
 
+        /* Estilos do Ícone de Cadeado & Área Restrita */
+        .nav-icon-lock {
+            width: 13px;
+            height: 13px;
+            stroke: var(--gold);
+            stroke-width: 2.2;
+            fill: none;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 6px;
+            margin-top: -3px;
+            transition: stroke 0.3s ease;
+        }
+
+        .nav-link:hover .nav-icon-lock {
+            stroke: var(--text-main);
+        }
+
+        /* Botão Flutuante do WhatsApp */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background-color: #22c55e;
+            color: #ffffff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 15px rgba(34, 197, 94, 0.4);
+            z-index: 999;
+            transition: var(--transition-smooth);
+            animation: pulse-whatsapp 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background-color: #1ebd54;
+            box-shadow: 0 8px 25px rgba(34, 197, 94, 0.5);
+        }
+
+        .whatsapp-float svg {
+            width: 32px;
+            height: 32px;
+            fill: #ffffff;
+        }
+
+        @keyframes pulse-whatsapp {
+            0% {
+                box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 15px rgba(34, 197, 94, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+            }
+        }
+
         /* ==========================================
            9. EFEITOS DE REVEAL (Scroll Animations)
            ========================================== */
@@ -1223,6 +1284,10 @@
                 <a href="#atuacao" class="nav-link">Áreas</a>
                 <a href="#diferenciais" class="nav-link">Como Funciona</a>
                 <a href="#contato" class="nav-link">Contato</a>
+                <a href="https://sistema.fidellisnunes.adv.br" target="_blank" rel="noopener noreferrer" class="nav-link" style="display: flex; align-items: center;">
+                    <svg class="nav-icon-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 11V7a4 4 0 018 0v4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    Área Restrita
+                </a>
             </nav>
             
             <a href="#contato" class="btn-header-cta">Atendimento</a>
@@ -1245,6 +1310,10 @@
                 <a href="#atuacao" class="mobile-link">Áreas</a>
                 <a href="#diferenciais" class="mobile-link">Como Funciona</a>
                 <a href="#contato" class="mobile-link">Contato</a>
+                <a href="https://sistema.fidellisnunes.adv.br" target="_blank" rel="noopener noreferrer" class="mobile-link" style="color: var(--gold); display: flex; align-items: center; gap: 8px;">
+                    <svg class="nav-icon-lock" viewBox="0 0 24 24" style="stroke: var(--gold); width: 16px; height: 16px;"><rect x="5" y="11" width="14" height="10" rx="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M8 11V7a4 4 0 018 0v4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    Área Restrita
+                </a>
             </nav>
             <div class="mobile-drawer-footer">
                 <span class="mobile-drawer-oab">Fidellis Nunes Advocacia • OAB/ES 35.054</span>
@@ -1626,5 +1695,12 @@
             });
         });
     </script>
+    
+    <!-- Botão Flutuante do WhatsApp -->
+    <a href="https://wa.me/5527998328676" target="_blank" rel="noopener noreferrer" class="whatsapp-float" aria-label="Fale conosco no WhatsApp">
+        <svg viewBox="0 0 24 24">
+            <path d="M12.012 2C6.48 2 2 6.48 2 12.012c0 1.73.443 3.414 1.288 4.908L2 22l5.228-1.37a9.96 9.96 0 004.782 1.22c5.533 0 10.013-4.48 10.013-10.012C22.025 6.48 17.545 2 12.012 2zm6.2 13.916c-.27.76-1.57 1.48-2.15 1.54-.51.05-1.17.07-3.4-.85-2.85-1.18-4.69-4.08-4.83-4.27-.14-.19-1.14-1.52-1.14-2.9 0-1.38.72-2.06.98-2.34.26-.28.57-.35.76-.35.19 0 .38 0 .54.01.17.01.39-.06.61.47.23.56.78 1.91.85 2.05.07.14.12.31.02.51-.1.2-.15.32-.3.49-.15.17-.32.39-.46.52-.16.15-.33.32-.14.65.19.33.85 1.4 1.83 2.27.84.75 1.55 1 1.93 1.16.38.16.61.13.84-.13.23-.26.98-1.14 1.24-1.53.26-.39.52-.33.88-.2.36.13 2.28 1.08 2.38 1.13.1.05.17.24.1.44z"/>
+        </svg>
+    </a>
 </body>
 </html>
